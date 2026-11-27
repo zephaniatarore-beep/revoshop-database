@@ -13,7 +13,6 @@ VALUES
     ('Personal Care', 'Pamper yourself from head to toe'),
     ('Computers & Gadgets', 'Stay connected in multi devices');
 
-
 INSERT INTO products (category_id, name, description, price, stock)
 VALUES
     ((SELECT id FROM categories WHERE name = 'Fashion'), 'Fleece Pashmina', 'Warmth and elegance all in one piece', 235000, 30),
@@ -32,3 +31,36 @@ VALUES
     ((SELECT id FROM users WHERE email = 'tumbelakamario@example.com'), 388000, 'delivered'),
     ((SELECT id FROM users WHERE email = 'melky.patti@example.com'), 667600, 'pending'),
     ((SELECT id FROM users WHERE email = 'nonadevina@example.com'), 513000, 'shipped');
+
+INSERT INTO order_items (order_id, product_id, quantity, price)
+VALUES
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'dee_andra@example.com')),
+     (SELECT id FROM products WHERE name = 'Fleece Pashmina'),
+     1, 235000),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'dee_andra@example.com')),
+     (SELECT id FROM products WHERE name = 'Tempe Truffle Chips'),
+     2, 40500),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'bli.wardhika@example.com')),
+     (SELECT id FROM products WHERE name = 'Smartphone Cooling Fan'),
+     1, 176300),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'bli.wardhika@example.com')),
+     (SELECT id FROM products WHERE name = 'Gel Facial Wash'),
+     1, 94900),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'tumbelakamario@example.com')),
+     (SELECT id FROM products WHERE name = 'Shake-shake Protein Yoghurt'),
+     5, 30000),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'tumbelakamario@example.com')),
+     (SELECT id FROM products WHERE name = 'Chunky-bites Frozen Banana'),
+     2, 119000),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'melky.patti@example.com')),
+     (SELECT id FROM products WHERE name = 'Smartphone Cooling Fan'),
+     2, 176300),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'melky.patti@example.com')),
+     (SELECT id FROM products WHERE name = 'Sunshield Mist'),
+     1, 315000),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'nonadevina@example.com')),
+     (SELECT id FROM products WHERE name = 'Sunshield Mist'),
+     1, 315000),
+    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'nonadevina@example.com')),
+     (SELECT id FROM products WHERE name = 'Grip Socks'),
+     2, 99000);
