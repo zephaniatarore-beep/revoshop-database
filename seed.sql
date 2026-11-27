@@ -24,3 +24,11 @@ VALUES
     ((SELECT id FROM categories WHERE name = 'Personal Care'), 'Sunshield Mist', 'Protect your skin from UVA and UVB rays', 315000, 50),
     ((SELECT id FROM categories WHERE name = 'Personal Care'), 'Gel Facial Wash', 'Gentle for your sensitive skin barrier', 94900, 50),
     ((SELECT id FROM categories WHERE name = 'Computers & Gadgets'), 'Smartphone Cooling Fan', 'No more overheating worries', 176300, 15);
+
+INSERT INTO orders (user_id, total, status)
+VALUES
+    ((SELECT id FROM users WHERE email = 'dee_andra@example.com'), 316000, 'delivered'),
+    ((SELECT id FROM users WHERE email = 'bli.wardhika@example.com'), 271200, 'shipped'),
+    ((SELECT id FROM users WHERE email = 'tumbelakamario@example.com'), 388000, 'delivered'),
+    ((SELECT id FROM users WHERE email = 'melky.patti@example.com'), 667600, 'pending'),
+    ((SELECT id FROM users WHERE email = 'nonadevina@example.com'), 513000, 'shipped');
