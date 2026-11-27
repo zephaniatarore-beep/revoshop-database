@@ -12,3 +12,10 @@ CREATE TABLE orders (
     status VARCHAR(20) NOT NULL DEFAULT 'pending',
     ordered_at TIMESTAMP DEFAULT now()
 );
+
+CREATE TABLE categories (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT now()
+);
