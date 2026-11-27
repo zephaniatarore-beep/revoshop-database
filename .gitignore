@@ -1,0 +1,12 @@
+# Confidential files
+.env
+
+# Trash
+Thumbs.db
+desktop.ini
+
+# Personal setting of VS Code
+.vscode/
+
+# File log
+*.log
