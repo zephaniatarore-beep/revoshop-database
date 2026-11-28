@@ -31,3 +31,5 @@ RevoShop is a one-stop-shopping online store that has a wide-range of categories
 - This repository uses UUID as the id for all tables (users, categories, orders, products, order_items) to keep it hard to guess.
 - Stock defaults to 0, so a product added without stock is treated as out of stock instead of falsely available.
 - Status defaults to 'pending', so every new order starts as unpaid until payment is confirmed.
+- CHECK constraints prevent invalid values, such as negative prices, negative stock, or an order item with zero quantity.
+- Each order has a unique `order_code` (e.g. `RVS-0001`), so order items can reference the right order even when one customer places many orders.
