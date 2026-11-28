@@ -24,43 +24,23 @@ VALUES
     ((SELECT id FROM categories WHERE name = 'Personal Care'), 'Gel Facial Wash', 'Gentle for your sensitive skin barrier', 94900, 50),
     ((SELECT id FROM categories WHERE name = 'Computers & Gadgets'), 'Smartphone Cooling Fan', 'No more overheating worries', 176300, 15);
 
-INSERT INTO orders (user_id, total, status)
+INSERT INTO orders (order_code, user_id, total, status)
 VALUES
-    ((SELECT id FROM users WHERE email = 'dee_andra@example.com'), 316000, 'delivered'),
-    ((SELECT id FROM users WHERE email = 'bli.wardhika@example.com'), 271200, 'shipped'),
-    ((SELECT id FROM users WHERE email = 'tumbelakamario@example.com'), 388000, 'delivered'),
-    ((SELECT id FROM users WHERE email = 'melky.patti@example.com'), 667600, 'pending'),
-    ((SELECT id FROM users WHERE email = 'nonadevina@example.com'), 513000, 'shipped');
+    ('RVS-0001', (SELECT id FROM users WHERE email = 'dee_andra@example.com'), 316000, 'delivered'),
+    ('RVS-0002', (SELECT id FROM users WHERE email = 'bli.wardhika@example.com'), 271200, 'shipped'),
+    ('RVS-0003', (SELECT id FROM users WHERE email = 'tumbelakamario@example.com'), 388000, 'delivered'),
+    ('RVS-0004', (SELECT id FROM users WHERE email = 'melky.patti@example.com'), 667600, 'pending'),
+    ('RVS-0005', (SELECT id FROM users WHERE email = 'nonadevina@example.com'), 513000, 'shipped');
 
 INSERT INTO order_items (order_id, product_id, quantity, price)
 VALUES
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'dee_andra@example.com')),
-     (SELECT id FROM products WHERE name = 'Fleece Pashmina'),
-     1, 235000),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'dee_andra@example.com')),
-     (SELECT id FROM products WHERE name = 'Tempe Truffle Chips'),
-     2, 40500),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'bli.wardhika@example.com')),
-     (SELECT id FROM products WHERE name = 'Smartphone Cooling Fan'),
-     1, 176300),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'bli.wardhika@example.com')),
-     (SELECT id FROM products WHERE name = 'Gel Facial Wash'),
-     1, 94900),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'tumbelakamario@example.com')),
-     (SELECT id FROM products WHERE name = 'Shake-shake Protein Yoghurt'),
-     5, 30000),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'tumbelakamario@example.com')),
-     (SELECT id FROM products WHERE name = 'Chunky-bites Frozen Banana'),
-     2, 119000),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'melky.patti@example.com')),
-     (SELECT id FROM products WHERE name = 'Smartphone Cooling Fan'),
-     2, 176300),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'melky.patti@example.com')),
-     (SELECT id FROM products WHERE name = 'Sunshield Mist'),
-     1, 315000),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'nonadevina@example.com')),
-     (SELECT id FROM products WHERE name = 'Sunshield Mist'),
-     1, 315000),
-    ((SELECT id FROM orders WHERE user_id = (SELECT id FROM users WHERE email = 'nonadevina@example.com')),
-     (SELECT id FROM products WHERE name = 'Grip Socks'),
-     2, 99000);
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0001'), (SELECT id FROM products WHERE name = 'Fleece Pashmina'), 1, 235000),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0001'), (SELECT id FROM products WHERE name = 'Tempe Truffle Chips'), 2, 40500),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0002'), (SELECT id FROM products WHERE name = 'Smartphone Cooling Fan'), 1, 176300),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0002'), (SELECT id FROM products WHERE name = 'Gel Facial Wash'), 1, 94900),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0003'), (SELECT id FROM products WHERE name = 'Shake-shake Protein Yoghurt'), 5, 30000),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0003'), (SELECT id FROM products WHERE name = 'Chunky-bites Frozen Banana'), 2, 119000),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0004'), (SELECT id FROM products WHERE name = 'Smartphone Cooling Fan'), 2, 176300),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0004'), (SELECT id FROM products WHERE name = 'Sunshield Mist'), 1, 315000),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0005'), (SELECT id FROM products WHERE name = 'Sunshield Mist'), 1, 315000),
+    ((SELECT id FROM orders WHERE order_code = 'RVS-0005'), (SELECT id FROM products WHERE name = 'Grip Socks'), 2, 99000);
